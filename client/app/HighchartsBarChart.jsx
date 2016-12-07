@@ -23,8 +23,8 @@ class HighchartsBarChart extends React.Component {
                     text: '',
                 },
                 credits: {
-                    text: '©' + currentYear + ' Grant Thornton.',
-                    href: 'http://www.grantthornton.co.uk/'
+                    text: '©' + currentYear + ' Awesome Path.',
+                    href: 'http://www.awesomepath.com'
                 },
                 xAxis: {
                     categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
