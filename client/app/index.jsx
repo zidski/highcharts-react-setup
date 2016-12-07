@@ -1,15 +1,14 @@
 import React from 'react';
 import {render} from 'react-dom';
-
-import AwesomeComponent from './AwesomeComponent.jsx';
-
+import style from '../../styles/HelloForm.scss'; 
+import HighchartsBarChart from './HighchartsBarChart.jsx';
 
 class App extends React.Component {
   render () {
     return (
-    	<div>
+    	<div className="hello-form">
     		<p> Hello React!</p>
-    		<AwesomeComponent />
+    		<HighchartsBarChart />
     	</div>
     )
   }

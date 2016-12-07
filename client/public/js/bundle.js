@@ -57,9 +57,13 @@
 	
 	var _reactDom = __webpack_require__(/*! react-dom */ 32);
 	
-	var _AwesomeComponent = __webpack_require__(/*! ./AwesomeComponent.jsx */ 178);
+	var _HelloForm = __webpack_require__(/*! ../../styles/HelloForm.scss */ 178);
 	
-	var _AwesomeComponent2 = _interopRequireDefault(_AwesomeComponent);
+	var _HelloForm2 = _interopRequireDefault(_HelloForm);
+	
+	var _HighchartsBarChart = __webpack_require__(/*! ./HighchartsBarChart.jsx */ 179);
+	
+	var _HighchartsBarChart2 = _interopRequireDefault(_HighchartsBarChart);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -83,13 +87,13 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'hello-form' },
 	        _react2.default.createElement(
 	          'p',
 	          null,
 	          ' Hello React!'
 	        ),
-	        _react2.default.createElement(_AwesomeComponent2.default, null)
+	        _react2.default.createElement(_HighchartsBarChart2.default, null)
 	      );
 	    }
 	  }]);
@@ -22039,15 +22043,24 @@
 
 /***/ },
 /* 178 */
-/*!*****************************************!*\
-  !*** ./client/app/AwesomeComponent.jsx ***!
-  \*****************************************/
+/*!*******************************!*\
+  !*** ./styles/HelloForm.scss ***!
+  \*******************************/
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 179 */
+/*!*******************************************!*\
+  !*** ./client/app/HighchartsBarChart.jsx ***!
+  \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -22064,54 +22077,106 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var AwesomeComponent = function (_React$Component) {
-	  _inherits(AwesomeComponent, _React$Component);
+	var HighchartsBarChart = function (_React$Component) {
+	    _inherits(HighchartsBarChart, _React$Component);
 	
-	  function AwesomeComponent(props) {
-	    _classCallCheck(this, AwesomeComponent);
+	    function HighchartsBarChart(props) {
+	        _classCallCheck(this, HighchartsBarChart);
 	
-	    var _this = _possibleConstructorReturn(this, (AwesomeComponent.__proto__ || Object.getPrototypeOf(AwesomeComponent)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (HighchartsBarChart.__proto__ || Object.getPrototypeOf(HighchartsBarChart)).call(this, props));
 	
-	    _this.state = { likesCount: 0 };
-	    _this.onLike = _this.onLike.bind(_this);
-	    return _this;
-	  }
-	
-	  _createClass(AwesomeComponent, [{
-	    key: 'onLike',
-	    value: function onLike() {
-	      var newLikesCount = this.state.likesCount + 1;
-	      this.setState({ likesCount: newLikesCount });
+	        _this.state = {
+	            chartId: 'LineChart' + new Date().getTime()
+	        };
+	        return _this;
 	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        'Likes : ',
-	        _react2.default.createElement(
-	          'span',
-	          null,
-	          this.state.likesCount
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: this.onLike },
-	            'Like Me'
-	          )
-	        )
-	      );
-	    }
-	  }]);
 	
-	  return AwesomeComponent;
+	    _createClass(HighchartsBarChart, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var id = this.state.chartId;
+	            //let categories = this.props.categories;
+	            //let series = this.props.series;
+	            var currentYear = new Date().getFullYear();
+	
+	            window.setTimeout(function () {
+	                Highcharts.chart(id, {
+	                    title: {
+	                        text: ''
+	                    },
+	                    subtitle: {
+	                        text: ''
+	                    },
+	                    credits: {
+	                        text: '©' + currentYear + ' Grant Thornton.',
+	                        href: 'http://www.grantthornton.co.uk/'
+	                    },
+	                    xAxis: {
+	                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+	                        lineWidth: 2
+	                    },
+	                    yAxis: {
+	                        lineWidth: 2,
+	                        title: {
+	                            text: ''
+	                        },
+	                        plotLines: [{
+	                            value: 0,
+	                            width: 1,
+	                            color: '#808080'
+	                        }]
+	                    },
+	                    plotOptions: {
+	                        series: {}
+	                    },
+	                    legend: {
+	                        layout: 'vertical',
+	                        align: 'right',
+	                        verticalAlign: 'top',
+	                        y: 30,
+	                        backgroundColor: '#fff',
+	                        borderColor: '#ccc',
+	                        borderWidth: .5
+	                    },
+	                    exporting: {
+	                        enabled: true
+	                    },
+	                    series: [{
+	                        name: 'Tokyo',
+	                        data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+	                    }, {
+	                        name: 'New York',
+	                        data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+	                    }, {
+	                        name: 'Berlin',
+	                        data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+	                    }, {
+	                        name: 'London',
+	                        data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+	                    }]
+	                });
+	            }, 50);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var style = {
+	                marginTop: "25px",
+	                marginBottom: "0px"
+	            };
+	
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement('div', { id: this.state.chartId, style: style })
+	            );
+	        }
+	    }]);
+	
+	    return HighchartsBarChart;
 	}(_react2.default.Component);
 	
-	exports.default = AwesomeComponent;
+	exports.default = HighchartsBarChart;
 
 /***/ }
 /******/ ]);

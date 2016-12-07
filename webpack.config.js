@@ -1,9 +1,10 @@
 var webpack = require('webpack');
 var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var BUILD_DIR = path.resolve(__dirname, 'client/public');
 var APP_DIR = path.resolve(__dirname, 'client/app');
+
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var config = {
   entry: APP_DIR + '/index.jsx',
@@ -17,22 +18,19 @@ var config = {
         test : /\.jsx?/,
         include : APP_DIR,
         loader : 'babel',
-        exclude: /node_modules/ 
+        exclude: /node_modules/
       },
-	  {  test: /\.css$/, loader: ExtractTextPlugin.extract({
-				notExtractLoader: "style-loader",
-				loader: "css-loader?sourceMap",
-			publicPath: BUILD_DIR
-            }) }
+      {
+      	test: /\.scss$/,
+		loader: ExtractTextPlugin.extract('css!sass')
+	  }
     ]
   },
   plugins: [
-     new ExtractTextPlugin({
-			filename: "client/public/css/[name].css?[hash]-[chunkhash]-[contenthash]-[name]",
-			disable: false,
-			allChunks: true
-}),
-    ]
+        new ExtractTextPlugin('css/main.css', {
+            allChunks: true
+        })
+]
 };
 
 module.exports = config;
